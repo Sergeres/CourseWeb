@@ -14,12 +14,12 @@ class categoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View|\Illuminate\Http\Response
      */
     public function index()
     {
-        $category = Category::get();
-        return View('category.index', compact('category'));
+        $categorys = Category::get();
+        return View('category.index', compact('categorys'));
     }
 
     /**
@@ -93,8 +93,9 @@ class categoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return \Ajax::redirect(route('category.index'));
     }
 }

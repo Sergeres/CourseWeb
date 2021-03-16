@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-<nav style="background: teal">
+<nav style="background: teal; margin-bottom: 30px">
     <div class="nav-wrapper">
         <div class="container">
             <a href="/" class="brand-logo; left"><i class="material-icons">content_cut</i></a>
@@ -34,6 +34,17 @@
 
                         @if (Auth::check())
                             <li><a href="{{ url('/home') }}">Личный кабинет</a></li>
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Выход
+                                </a>
+
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
                         @else
                             <li><a href="{{ url('/login') }}">Войти</a></li>
 {{--                            <li><a href="{{ url('/register') }}">Зарегистрироваться</a></li>--}}
@@ -41,8 +52,17 @@
                     </div>
                 @endif
             </ul>
+            <div class="nav-content">
+                <ul class="tabs tabs-transparent" style="background: darkslategray">
+                    <li class="tab"><a class="/categorys" href="/products">Все товары</a></li>
+                    <li class="tab"><a href="/category">Категории</a></li>
+                    <li class="tab"><a href="/product">Продукты</a></li>
+                    <li class="tab"><a href="#">Tab 4</a></li>
+                </ul>
+            </div>
         </div>
     </div>
+
 </nav>
 
 @yield('content')
@@ -73,6 +93,7 @@
     </div>
 </footer>
 
+<script src="/js/laravel.ajax.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

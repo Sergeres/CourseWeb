@@ -1,16 +1,14 @@
 @extends('layouts.menu')
 
 @section('content')
-<div class="container" style="margin-top: 10px">
+<div class="container">
 
     <div class="row">
-
         <select name="category_id" style="display: block">
-            @foreach($category as $categories)
-                <option value="{{ $categories->id }}"> {{ $categories->name }} </option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}"> {{ $category->name }} </option>
             @endforeach
         </select>
-
     </div>
 
 

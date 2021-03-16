@@ -20,9 +20,8 @@ class productController extends Controller
             ->select(DB::raw('products.name, products.price, products.description, products.picture, categories.id as category_id, categories.name as category_name'))
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->get();
-        $product = Product::get();
-        $category = Category::get();
-        return View('product.index',  compact('category'), compact('products'));
+        $categories = Category::get();
+        return View('product.index',  compact('categories'), compact('products'));
     }
 
     /**
