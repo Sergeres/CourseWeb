@@ -27,3 +27,16 @@ Route::resource('category', App\Http\Controllers\categoryController::class);
 Route::resource('product', App\Http\Controllers\productController::class);
 
 Route::get('/products', [App\Http\Controllers\productController::class, 'allProducts']);
+
+Route::get('test', function (){
+    \Cart::add(array(
+        'id' => 456, // inique row ID
+        'name' => 'Sample Item',
+        'price' => 67.99,
+        'quantity' => 4,
+        'attributes' => array()));
+});
+
+Route::get('cart', function (){
+    return \Cart::getContent();
+});
