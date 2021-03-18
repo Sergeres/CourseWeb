@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_token" content="{!! csrf_token() !!}"/>
 
     <title>Расходные материалы для парикмахерских</title>
 
@@ -23,7 +24,7 @@
     </style>
 </head>
 <body>
-<nav style="background: teal; margin-bottom: 30px">
+<nav style="background: teal; margin-bottom: 60px">
     <div class="nav-wrapper">
         <div class="container">
             <a href="/" class="brand-logo; left"><i class="material-icons">content_cut</i></a>
@@ -57,25 +58,30 @@
                     <li class="tab"><a class="/categorys" href="/products">Все товары</a></li>
                     <li class="tab"><a href="/category">Категории</a></li>
                     <li class="tab"><a href="/product">Продукты</a></li>
-                    <li class="tab"><a href="#">Tab 4</a></li>
+                    <li class="tab"><a href="/cart">Корзина</a></li>
                 </ul>
             </div>
         </div>
     </div>
-
 </nav>
 
-@yield('content')
+<main class="relative flex items-top justify-center min-h-screen">
+    @yield('content')
+</main>
 
-<footer class="page-footer" style="background-color: teal; margin-top: 300px">
+
+<script src="/js/laravel.ajax.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+<footer class="page-footer" style="background-color: teal;">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Расходники для "Барбишопа"</h5>
+                {{--                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>--}}
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Полезные ссылки</h5>
                 <ul>
                     <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
                     <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
@@ -92,8 +98,4 @@
         </div>
     </div>
 </footer>
-
-<script src="/js/laravel.ajax.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
 </html>

@@ -28,15 +28,22 @@ Route::resource('product', App\Http\Controllers\productController::class);
 
 Route::get('/products', [App\Http\Controllers\productController::class, 'allProducts']);
 
-Route::get('test', function (){
-    \Cart::add(array(
-        'id' => 456, // inique row ID
-        'name' => 'Sample Item',
-        'price' => 67.99,
-        'quantity' => 4,
-        'attributes' => array()));
-});
+//Route::get('test', function (){
+//    \Cart::add(array(
+//        'id' => 456, // inique row ID
+//        'name' => 'Sample Item',
+//        'price' => 67.99,
+//        'quantity' => 4,
+//        'attributes' => array()));
+//});
 
 Route::get('cart', function (){
-    return \Cart::getContent();
-});
+    $data = Cart::getContent();
+    return View('cart.index', compact('data'));
+})->name('cart');
+
+Route::DELETE( '/clearCart', [App\Http\Controllers\CartController::class, 'clear'])->name('clearCart');
+
+Route::get('/remove/{id}',[App\Http\Controllers\CartController::class, 'deleteItem'])->name('remove.item');
+
+Route::get('/add/{id}',[App\Http\Controllers\CartController::class, 'addItem'])->name('add.item');
