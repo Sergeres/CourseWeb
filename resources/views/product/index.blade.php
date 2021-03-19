@@ -11,6 +11,8 @@
         </select>
     </div>
 
+{{--    <a href="{{route('filterProducts', 2)}}" class="btn red ajax">Отфильтровать</a>--}}
+
 
     <table>
         <thead>

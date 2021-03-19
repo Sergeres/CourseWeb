@@ -42,8 +42,12 @@ Route::get('cart', function (){
     return View('cart.index', compact('data'));
 })->name('cart');
 
-Route::DELETE( '/clearCart', [App\Http\Controllers\CartController::class, 'clear'])->name('clearCart');
+Route::get( '/clearCart', [App\Http\Controllers\CartController::class, 'clear'])->name('clearCart');
 
 Route::get('/remove/{id}',[App\Http\Controllers\CartController::class, 'deleteItem'])->name('remove.item');
 
 Route::get('/add/{id}',[App\Http\Controllers\CartController::class, 'addItem'])->name('add.item');
+
+Route::get('/sub/{id}',[App\Http\Controllers\CartController::class, 'subItem'])->name('sub.item');
+
+Route::get('/filterProd/{id}',[App\Http\Controllers\productController::class, 'filterProducts'])->name('filterProducts');

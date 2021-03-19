@@ -31,7 +31,8 @@ class productController extends Controller
      */
     public function create()
     {
-        return View('category.create');
+        $categories = Category::get();
+        return View('product.create', compact('categories'));
     }
 
     /**
@@ -101,5 +102,16 @@ class productController extends Controller
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->get();
         return View('products', compact('products'));
+    }
+
+    public function filterProducts($id)
+    {
+        $category = Category::find($id);
+        $products = DB::table('products')
+            ->select(DB::raw('products.id, products.name, products.price, products.description, products.picture, categories.id as category_id, categories.name as category_name'))
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->where('category_id', $category->id)
+            ->get();
+        return \Ajax::View('product.index', compact('products'));
     }
 }
