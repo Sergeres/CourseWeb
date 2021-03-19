@@ -12,5 +12,26 @@
             </div>
         </div>
     </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach($data as $unit)
+            <tr>
+                <td>{{$unit->user_id}}</td>
+                <td>{{$unit->amount}}</td>
+                <td>{{$unit->quantity}}</td>
+            </tr>
+        @endforeach
+
+
+    </table>
 </div>
 @endsection

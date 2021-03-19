@@ -37,7 +37,19 @@
         </table>
 
             <h4>Общая цена: {{\Cart::getTotal()}}</h4><br>
-            <a href="{{route('clearCart')}}" class="btn red ajax">Очистить корзину</a>
+        <div class="row">
+
+            @if (Auth::check())
+                <form method="POST" action="{{route('order.store')}}">
+                    <a href="{{route('clearCart')}}" class="btn red ajax">Очистить корзину</a>
+                    @csrf
+                    {{--                <a class="btn green">buy</a>--}}
+                    <button class="btn green" type="submit" name="action">Оформить заказ</button>
+                </form>
+            @endif
+        </div>
+
+
         @else
             <h5>Корзина пуста</h5>
 {{--        <button class="btn red ajax" type="submit" name="action">Удалить</button>--}}

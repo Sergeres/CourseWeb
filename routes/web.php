@@ -51,3 +51,5 @@ Route::get('/add/{id}',[App\Http\Controllers\CartController::class, 'addItem'])-
 Route::get('/sub/{id}',[App\Http\Controllers\CartController::class, 'subItem'])->name('sub.item');
 
 Route::get('/filterProd/{id}',[App\Http\Controllers\productController::class, 'filterProducts'])->name('filterProducts');
+
+Route::resource('order', App\Http\Controllers\OrderController::class);

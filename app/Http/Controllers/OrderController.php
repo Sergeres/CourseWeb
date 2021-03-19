@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\ProductOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
@@ -34,7 +38,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $order = Order::create(['user_id'=>Auth::user()->id, 'amount'=>\Cart::getTotal()]);
+
+       $goods = \Cart::getContent();
+
+       foreach ($goods as $good ){
+           ProductOrder::create(['order_id'=>$order->id, 'product_id'=>$good->id, 'quantity'=>$good->quantity]);
+       }
+
+       \Cart::clear();
+       return Redirect('cart');
     }
 
     /**
