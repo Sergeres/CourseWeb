@@ -4,14 +4,17 @@
 <div class="container">
 
     <div class="row">
-        <select name="category_id" style="display: block">
+        <label for="category_id">Категория товара</label>
+        <select id="category_id" name="category_id" style="display: block">
             @foreach($categories as $category)
                 <option value="{{ $category->id }}"> {{ $category->name }} </option>
             @endforeach
         </select>
+
     </div>
 
-{{--    <a href="{{route('filterProducts', 2)}}" class="btn red ajax">Отфильтровать</a>--}}
+{{--    {{$selectOption = $_POST['category_id']}}--}}
+        <a href="{{route('filterProducts', 2)}}" class="btn red ajax">Отфильтровать</a>
 
 
     <table>

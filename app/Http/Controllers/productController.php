@@ -106,12 +106,13 @@ class productController extends Controller
 
     public function filterProducts($id)
     {
+        $categories = Category::get();
         $category = Category::find($id);
         $products = DB::table('products')
             ->select(DB::raw('products.id, products.name, products.price, products.description, products.picture, categories.id as category_id, categories.name as category_name'))
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->where('category_id', $category->id)
             ->get();
-        return \Ajax::View('product.index', compact('products'));
+        return \Ajax::View('product.index', compact('products'), compact('categories'));
     }
 }

@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container">
+        <h3>Корзина</h3>
+        @if(sizeof(\Cart::getContent()) != 0)
         <table>
             <thead>
             <tr>
@@ -19,9 +21,9 @@
                         <td>{{$unit->price}}</td>
                         <td>
                             {{$unit->quantity}}
-                            <a href="{{route('add.item', $unit->id)}}" class="btn-floating btn-sm waves-effect waves-light btn orange ajax">+</a>
+                            <a style="margin-left: 10px" href="{{route('add.item', $unit->id)}}" class="green waves-effect waves-green btn-flat ajax">+</a>
                             @if($unit->quantity > 1)
-                                <a href="{{route('sub.item', $unit->id)}}" class="btn-floating btn-sm waves-effect waves-light btn red ajax">-</a>
+                                <a href="{{route('sub.item', $unit->id)}}" class="red waves-effect waves-red btn-flat ajax">-</a>
                             @endif
                         </td>
 
@@ -33,10 +35,12 @@
 
 
         </table>
-        @if(sizeof(\Cart::getContent()) != 0)
-            <h3>Общая цена: {{\Cart::getTotal()}}</h3><br>
+
+            <h4>Общая цена: {{\Cart::getTotal()}}</h4><br>
             <a href="{{route('clearCart')}}" class="btn red ajax">Очистить корзину</a>
-        @endif
+        @else
+            <h5>Корзина пуста</h5>
 {{--        <button class="btn red ajax" type="submit" name="action">Удалить</button>--}}
+        @endif
     </div>
 @endsection
