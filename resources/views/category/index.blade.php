@@ -14,6 +14,9 @@
         <tr>
             <th>Название</th>
             <th>Описание</th>
+            @if (Auth::check() && Auth::user()->admin == true)
+                <th></th>
+            @endif
         </tr>
         </thead>
         <tbody>

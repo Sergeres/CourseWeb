@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Compound;
 
 class productController extends Controller
 {
@@ -69,7 +70,12 @@ class productController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Category::get();
+        // show the edit form and pass the shark
+//       dd($product, $categories);
+        return View('product.create', compact('categories'))
+            ->with('product', $product);
     }
 
     /**
@@ -79,9 +85,10 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->only(['name', 'price', 'description', 'picture', 'category_id', 'picture']));
+        return redirect()->route('product.index');
     }
 
     /**
