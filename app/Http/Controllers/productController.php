@@ -18,7 +18,7 @@ class productController extends Controller
     public function index()
     {
         $products = DB::table('products')
-            ->select(DB::raw('products.name, products.price, products.description, products.picture, categories.id as category_id, categories.name as category_name'))
+            ->select(DB::raw('products.id, products.name, products.price, products.description, products.picture, categories.id as category_id, categories.name as category_name'))
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->get();
         $categories = Category::get();
@@ -97,9 +97,10 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return \Ajax::redirect(route('product.index'));
     }
 
     public function allProducts()

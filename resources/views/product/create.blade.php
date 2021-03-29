@@ -19,11 +19,16 @@
             </div>
 
             <div class="form-group">
-                <div class="input-field">
-                    <label for="description">Описание</label>
-                    <textarea id="description" class="materialize-textarea form-control" data-length="120">{{ old('description', isset($product) ? $product->description : null) }}</textarea>
-                </div>
+                <label for="description">Описание</label>
+                <input class="form-control" type="text" id="description" name="description" value="{{ old('description', isset($product) ? $product->description : null) }}">
             </div>
+
+{{--            <div class="form-group">--}}
+{{--                <div class="input-field">--}}
+{{--                    <label for="description">Описание</label>--}}
+{{--                    <textarea name="description" id="description" class="materialize-textarea form-control" data-length="120">{{ old('description', isset($product) ? $product->description : null) }}</textarea>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="form-group">
                 <label for="picture">Изображение</label>

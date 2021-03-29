@@ -32,10 +32,10 @@
 {{--            </div>--}}
 {{--        </div>--}}
 
-            <div class="col s4">
+            <div class="col s4" style="max-height: 200px; margin-bottom: 400px">
                 <div class="card">
                     <div class="card-image w3-card-4">
-                        <figure class="image is-3by4"><img style="max-width: 300px; max-height: 300px; width: auto; height: auto; display: block" src="{{$product->picture}}" alt=""></figure>
+                        <figure class="image is-3by4"><img style="max-width: 300px; max-height: 300px; min-height: 300px; width: auto; height: auto; display: block" src="{{$product->picture}}" alt=""></figure>
                         <span style="background-color: #A5A5A5" class="card-title">{{$product->name}}</span>
                     </div>
                     <div class="card-content">

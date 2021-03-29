@@ -17,6 +17,7 @@ class CreateProductOrdersTable extends Migration
             $table->integer('order_id');
             $table->integer('product_id');
             $table->integer('quantity');
+            $table->decimal('price');
 
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class categoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         Category::create($request->all());
         return Redirect('category');
@@ -81,7 +82,7 @@ class categoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         $category->update($request->only(['name', 'description']));
         return redirect()->route('category.index');

@@ -59,5 +59,6 @@
                             </div>
                         </div>
                     </form>
+            <a class="btn blue" href="{{ route('vk.auth') }}"><i class="material-icons left">beenhere</i>Войти через ВК</a>
 </div>
 @endsection

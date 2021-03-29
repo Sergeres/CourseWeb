@@ -45,7 +45,11 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url('/products') }}">Каталог</a></li>
-                <li><a href="/cart"><i class="material-icons left">shopping_cart</i>Корзина</a></li>
+                @if (sizeof(\Cart::getContent()) != 0)
+                    <li><a href="/cart"><i class="material-icons left">add_shopping_cart</i>Корзина</a></li>
+                @else
+                    <li><a href="/cart"><i class="material-icons left">shopping_cart</i>Корзина</a></li>
+                @endif
                 @if (Route::has('login'))
                     @if (Auth::check())
                         @if(Auth::user()->admin == true)

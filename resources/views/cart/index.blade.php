@@ -46,6 +46,9 @@
                     {{--                <a class="btn green">buy</a>--}}
                     <button class="btn green" type="submit" name="action">Оформить заказ</button>
                 </form>
+                <h5>
+                    Цена со скидкой: {{\Cart::getTotal() - \Cart::getTotal()/100*$countOrders[0]->count}}
+                </h5>
             @endif
         </div>
 

@@ -19,6 +19,9 @@
             <div class="form-group">
                 <label for="name">Наименование</label>
                 <input class="form-control" type="text" id="name" name="name" value="{{ old('name', isset($category) ? $category->name : null) }}">
+                @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
 {{--                <label for="description">Body</label>--}}
@@ -28,6 +31,9 @@
                     <label for="description">Описание</label>
                     <textarea id="description" class="materialize-textarea form-control" data-length="120">{{ old('description', isset($category) ? $category->description : null) }}</textarea>
                 </div>
+                @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
             </div>
             <div class="row">

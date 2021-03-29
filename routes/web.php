@@ -35,10 +35,7 @@ Route::get('/products', [App\Http\Controllers\productController::class, 'allProd
 //        'attributes' => array()));
 //});
 
-Route::get('cart', function (){
-    $data = Cart::getContent();
-    return View('cart.index', compact('data'));
-})->name('cart');
+Route::get('cart', [App\Http\Controllers\CartController::class, 'loadCart'])->name('cart');
 
 Route::get( '/clearCart', [App\Http\Controllers\CartController::class, 'clear'])->name('clearCart');
 
@@ -51,3 +48,8 @@ Route::get('/sub/{id}',[App\Http\Controllers\CartController::class, 'subItem'])-
 Route::get('/filterProd/{id}',[App\Http\Controllers\productController::class, 'filterProducts'])->name('filterProducts');
 
 Route::resource('order', App\Http\Controllers\OrderController::class);
+
+Route::group(['middleware'=>'guest'], function(){
+    Route::get('/vk/auth', [App\Http\Controllers\SocialController::class, 'index'])->name('vk.auth');
+    Route::get('/vk/auth/callback', [App\Http\Controllers\SocialController::class, 'callback']);
+});

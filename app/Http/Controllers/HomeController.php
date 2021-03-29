@@ -36,11 +36,18 @@ class HomeController extends Controller
             ->orderBy('orders.created_at', 'asc')
             ->get();
 
+        $countOrders = DB::table('orders')
+            ->select(DB::raw('count(*)'))
+            ->where('orders.user_id','=', Auth::user()->id)
+            ->where('amount','>=','500')
+            ->get();
+
         $products = DB::table('product_orders')
-            ->select(DB::raw('product_orders.order_id, product_orders.product_id, product_orders.quantity, products.name, products.price'))
+            ->select(DB::raw('product_orders.order_id, product_orders.product_id, product_orders.quantity, products.name, products.price, product_orders.price as sellPrice'))
             ->leftJoin('products','product_orders.product_id','=','products.id')
             ->get();
-        return view('home', compact('data'), compact('products'));
+
+        return View('home', compact('data', 'products'), ['countOrders' => $countOrders]);
     }
 
     public function topSells()
