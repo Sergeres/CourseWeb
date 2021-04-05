@@ -3,7 +3,7 @@
 @section('content')
     <div class="container" style="margin-top: 10px">
         <h3>Продукты</h3>
-        <div class="row">
+
         @foreach($products as $product)
 {{--            <div class="card horizontal">--}}
 {{--                <div class="card-image waves-effect waves-block waves-light">--}}
@@ -48,6 +48,6 @@
                 </div>
             </div>
         @endforeach
-        </div>
+
     </div>
 @endsection
