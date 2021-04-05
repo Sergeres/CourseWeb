@@ -26,13 +26,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         $( document ).ready(function() {
+            $('.sidenav').sidenav();
             $('.dropdown-trigger').dropdown({
                 // hover: true,
                 coverTrigger: false
             });
             $('.collapsible').collapsible();
             $('.carousel').carousel();
-            $('.sidenav').sidenav();
+
         });
     </script>
     <script src="/js/laravel.ajax.js"></script>
@@ -41,7 +42,7 @@
 <nav style="background: black;">
     <div class="nav-wrapper">
         <div class="container">
-            <a href="/" class="brand-logo"><i class="material-icons">content_cut</i>Salon de Coiffure</a>
+            <a href="/" class="brand-logo"><i class="material-icons">content_cut</i>Salon</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url('/products') }}">Каталог</a></li>
@@ -69,7 +70,7 @@
                         </li>
                     @else
                         <li><a href="{{ url('/login') }}">Войти</a></li>
-{{--                            <li><a href="{{ url('/register') }}">Зарегистрироваться</a></li>--}}
+                            <li><a href="{{ url('/register') }}">Зарегистрироваться</a></li>
                     @endif
                 @endif
             </ul>
@@ -108,6 +109,7 @@
             </li>
         @else
             <li><a href="{{ url('/login') }}">Войти</a></li>
+            <li><a href="{{ url('/register') }}">Зарегистрироваться</a></li>
             {{--                            <li><a href="{{ url('/register') }}">Зарегистрироваться</a></li>--}}
         @endif
     @endif
@@ -140,7 +142,7 @@
     </div>
     <div class="footer-copyright" style="background-color: black">
         <div class="container">
-            © 2021 Created by Sergey Prozorov
+            © 2021 Created
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
     </div>

@@ -3,11 +3,29 @@
 @section('content')
 
     {{--        <p>Добро пожаловать в наш интернет магазин !</p>--}}
-    <div class="container valign-wrapper" style="height: 100vh">
-        <div class="row">
-            <div class="col s12 center"><h4 class="center-align">Добро пожаловать в магазин расходных материалов для парикмахерских!</h4></div>
-            <div class="col s12 center"><img src="https://sun9-13.userapi.com/impg/0GBBAN8ifDeWVJYZtPBVt1Uz8mh_CV8oNkHM1Q/zI2I16WgKvw.jpg?size=700x200&quality=96&sign=c74d07648571d6d7b051632b6aa87e31&type=album"></div>
-            <div class="col s12 center"><a href="/products" class="btn-large waves-effect waves-light black">За покупками!</a></div>
+{{--    <div class="container valign-wrapper" style="height: 100vh">--}}
+{{--        <div class="row col-lg-12 col-md-6">--}}
+{{--            <div class=" col-lg-12 col-md-6 center"></div>--}}
+{{--            <div class=" col-lg-12 col-md-6 center"></div>--}}
+{{--            <div class=" col-lg-12 col-md-6 center"></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+    <div class="section no-pad-bot" id="index-banner" style="margin-bottom: 300px; margin-top: 300px">
+        <div class="container">
+            <div class="row">
+                <div class="center">
+                    <img style="max-width: 400px; width: auto; height: auto" src="https://sun9-13.userapi.com/impg/0GBBAN8ifDeWVJYZtPBVt1Uz8mh_CV8oNkHM1Q/zI2I16WgKvw.jpg?size=700x200&quality=96&sign=c74d07648571d6d7b051632b6aa87e31&type=album">
+                </div>
+            </div>
+            <h4 class="center-align">Добро пожаловать в магазин расходных материалов для парикмахерских!</h4>
+{{--            <div class="row center">--}}
+{{--                <h5 class="header col s12 light">Теперь чистый автомобиль – это не роскошь, это комфорт и экономия средств,--}}
+{{--                    удовольствие от ухода за автомобилем и сервис в деталях.</h5>--}}
+{{--            </div>--}}
+            <div class="row center">
+                <a href="/products" class="btn-large waves-effect waves-light black">За покупками!</a>
+            </div>
         </div>
     </div>
 
